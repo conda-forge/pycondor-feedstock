@@ -1,6 +1,6 @@
 {% set name = "PyCondor" %}
-{% set version = "0.4.0" %}
-{% set sha256 = "182d4bf0e35740c7232f00f3a3259369045514666f14ed4c2bd5751940ec1b9c" %}
+{% set version = "0.5.0" %}
+{% set sha256 = "9cf8b54159fe3a654d71ffc815840c642f3bd0c89edb401952d6b9092abf0cc2" %}
 
 package:
   name: {{ name|lower }}
