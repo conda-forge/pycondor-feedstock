@@ -12,18 +12,18 @@ source:
 
 build:
   noarch: python
-  number: 0
-  script: python -m pip install --no-deps --ignore-installed .
+  number: 1
+  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv"
   entry_points:
     - pycondor = pycondor.cli:cli
 
 
 requirements:
   build:
-    - python >=2.7,<3.7
+    - python >=2.7
     - pip
   run:
-    - python >=2.7,<3.7
+    - python >=2.7
     - click
 
 test:
