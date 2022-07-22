@@ -1,7 +1,7 @@
 About pycondor
 ==============
 
-Home: https://github.com/jrbourbeau/pycondor
+Home: https://github.com/pycondor/pycondor
 
 Package license: MIT
 
@@ -9,9 +9,9 @@ Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/pycondor-feedst
 
 Summary: Python utility for HTCondor
 
-Development: https://github.com/jrbourbeau/pycondor
+Development: https://github.com/pycondor/pycondor.git
 
-Documentation: https://jrbourbeau.github.io/pycondor/
+Documentation: https://pycondor.readthedocs.io/
 
 PyCondor (Python HTCondor) is a tool to help build and submit workflows to
 HTCondor in a straight-forward manner with minimal hassle.
@@ -23,7 +23,7 @@ Current build status
 
 <table><tr><td>All platforms:</td>
     <td>
-      <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=3217&branchName=main">
+      <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=&branchName=main">
         <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pycondor-feedstock?branchName=main">
       </a>
     </td>
@@ -151,6 +151,8 @@ In order to produce a uniquely identifiable distribution:
 Feedstock Maintainers
 =====================
 
+* [@GregoryAshton](https://github.com/GregoryAshton/)
 * [@duncanmmacleod](https://github.com/duncanmmacleod/)
+* [@jodergrosse](https://github.com/jodergrosse/)
 * [@jrbourbeau](https://github.com/jrbourbeau/)
 

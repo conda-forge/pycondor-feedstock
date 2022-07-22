@@ -1,6 +1,5 @@
 {% set name = "PyCondor" %}
-{% set version = "0.5.0" %}
-{% set sha256 = "9cf8b54159fe3a654d71ffc815840c642f3bd0c89edb401952d6b9092abf0cc2" %}
+{% set version = "0.6.0" %}
 
 package:
   name: {{ name|lower }}
@@ -8,28 +7,27 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: {{ sha256 }}
-  patches:
-    # fix of import from collections
-    - collections.patch
+  sha256: 3424b8f51ac63a18d3c12e1dae5316a5faa0c1dd1606bb6c1f524df5c031fcb5
 
 build:
-  noarch: python
-  number: 2
-  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv"
   entry_points:
     - pycondor = pycondor.cli:cli
-
+  noarch: python
+  number: 0
+  script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
-  build:
-    - python >=2.7
+  host:
     - pip
-  run:
     - python >=2.7
+    - setuptools >=38.6.0
+  run:
     - click
+    - python >=2.7
 
 test:
+  requires:
+    - pip
   imports:
     - pycondor
     - pycondor.job
@@ -40,21 +38,25 @@ test:
     - pycondor.visualize
     - pycondor.compatibility
   commands:
+    # check requirements
+    - python -m pip check
+    # check entry points
     - pycondor -h
 
 about:
-  home: https://github.com/jrbourbeau/pycondor
+  home: https://github.com/pycondor/pycondor
+  dev_url: https://github.com/pycondor/pycondor.git
+  doc_url: https://pycondor.readthedocs.io/
   license: MIT
-  license_family: MIT
   license_file: LICENSE
-  summary: 'Python utility for HTCondor'
+  summary: Python utility for HTCondor
   description: |
     PyCondor (Python HTCondor) is a tool to help build and submit workflows to
     HTCondor in a straight-forward manner with minimal hassle.
-  doc_url: https://jrbourbeau.github.io/pycondor/
-  dev_url: https://github.com/jrbourbeau/pycondor
 
 extra:
   recipe-maintainers:
     - duncanmmacleod
+    - GregoryAshton
+    - jodergrosse
     - jrbourbeau
