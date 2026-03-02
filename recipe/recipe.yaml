@@ -1,0 +1,69 @@
+schema_version: 1
+
+context:
+  name: PyCondor
+  version: 0.6.0
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/${{ name }}-${{ version }}.tar.gz
+  sha256: 3424b8f51ac63a18d3c12e1dae5316a5faa0c1dd1606bb6c1f524df5c031fcb5
+
+build:
+  number: 1
+  noarch: python
+  script: ${{ PYTHON }} -m pip install . -vv
+  python:
+    entry_points:
+      - pycondor = pycondor.cli:cli
+
+requirements:
+  host:
+    - pip
+    - python ${{ python_min }}.*
+    - setuptools >=38.6.0
+  run:
+    - click
+    - python >=${{ python_min }}
+
+tests:
+  - python:
+      imports:
+        - pycondor
+        - pycondor.job
+        - pycondor.dagman
+        - pycondor.utils
+        - pycondor.basenode
+        - pycondor.cli
+        - pycondor.visualize
+        - pycondor.compatibility
+      pip_check: true
+      python_version: ${{ python_min }}.*
+  - requirements:
+      run:
+        - python ${{ python_min }}.*
+    script:
+      - pycondor -h
+
+about:
+  license: MIT
+  license_file: LICENSE
+  summary: Python utility for HTCondor
+  description: |
+    PyCondor (Python HTCondor) is a tool to help build and submit workflows to
+    HTCondor in a straight-forward manner with minimal hassle.
+
+
+  homepage: https://github.com/pycondor/pycondor
+  repository: https://github.com/pycondor/pycondor.git
+  documentation: https://pycondor.readthedocs.io/
+
+extra:
+  recipe-maintainers:
+    - duncanmmacleod
+    - GregoryAshton
+    - jodergrosse
+    - jrbourbeau
