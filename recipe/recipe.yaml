@@ -2,18 +2,18 @@ schema_version: 1
 
 context:
   name: PyCondor
-  version: 0.6.0
+  version: 0.6.1
 
 package:
   name: ${{ name|lower }}
   version: ${{ version }}
 
 source:
-  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/${{ name }}-${{ version }}.tar.gz
-  sha256: 3424b8f51ac63a18d3c12e1dae5316a5faa0c1dd1606bb6c1f524df5c031fcb5
+  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/${{ name|lower }}-${{ version }}.tar.gz
+  sha256: b5ae2fe28b1ea03801304c95dc944d61ca7f8745529c8346e639da745413c690
 
 build:
-  number: 1
+  number: 0
   noarch: python
   script: ${{ PYTHON }} -m pip install . -vv
   python:
@@ -39,7 +39,6 @@ tests:
         - pycondor.basenode
         - pycondor.cli
         - pycondor.visualize
-        - pycondor.compatibility
       pip_check: true
       python_version: ${{ python_min }}.*
   - requirements:
